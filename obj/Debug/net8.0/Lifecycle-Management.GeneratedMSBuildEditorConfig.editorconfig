@@ -1,0 +1,103 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LifecycleManagement
+build_property.RootNamespace = LifecycleManagement
+build_property.ProjectDir = /home/runner/work/Lifecycle-Management/Lifecycle-Management/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/runner/work/Lifecycle-Management/Lifecycle-Management
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Items/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Items/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbXMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Items/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbXMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Items/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbXMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Items/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/ItemTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbVR5cGVzL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/ItemTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbVR5cGVzL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/ItemTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbVR5cGVzL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/ItemTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSXRlbVR5cGVzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Shared/_ItemTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19JdGVtVGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/runner/work/Lifecycle-Management/Lifecycle-Management/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tqxpzh0qh9
