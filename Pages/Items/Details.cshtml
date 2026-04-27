@@ -1,0 +1,100 @@
+@page
+@model LifecycleManagement.Pages.Items.DetailsModel
+@{
+    ViewData["Title"] = "Item Details";
+    var vm = Model.ItemVM;
+    var badgeClass = vm.UrgencyStatus switch {
+        "Critical" => "badge-critical",
+        "Approaching" => "badge-approaching",
+        _ => "badge-safe"
+    };
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="d-flex align-items-center mb-4">
+            <a asp-page="./Index" class="btn btn-sm btn-outline-secondary me-3"><i class="bi bi-arrow-left"></i></a>
+            <div class="flex-grow-1">
+                <div class="d-flex align-items-center gap-2">
+                    <h1 class="h3 mb-0 fw-bold">@vm.Item.Name</h1>
+                    <span class="badge @badgeClass">@vm.UrgencyStatus</span>
+                </div>
+                <p class="text-muted mb-0">@vm.Item.ItemType?.Name</p>
+            </div>
+            <a asp-page="./Edit" asp-route-id="@vm.Item.Id" class="btn btn-primary btn-sm">
+                <i class="bi bi-pencil me-1"></i> Edit
+            </a>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header fw-medium">Lifecycle Details</div>
+                    <div class="card-body">
+                        <dl class="row mb-0 small">
+                            <dt class="col-sm-5 text-muted">Expiration</dt>
+                            <dd class="col-sm-7">@vm.Item.ExpirationDate.ToString("MMM d, yyyy")</dd>
+
+                            <dt class="col-sm-5 text-muted">Days Remaining</dt>
+                            <dd class="col-sm-7">
+                                @if (vm.DaysRemaining < 0)
+                                {
+                                    <span class="text-danger">@Math.Abs(vm.DaysRemaining) days overdue</span>
+                                }
+                                else
+                                {
+                                    <span>@vm.DaysRemaining days</span>
+                                }
+                            </dd>
+
+                            <dt class="col-sm-5 text-muted">Renewal Start</dt>
+                            <dd class="col-sm-7">@vm.RenewalStartDate.ToString("MMM d, yyyy")</dd>
+
+                            <dt class="col-sm-5 text-muted">Lead Time</dt>
+                            <dd class="col-sm-7">@vm.EffectiveLeadDays days @(vm.Item.LeadDaysOverride.HasValue ? "(override)" : "(default)")</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header fw-medium">Item Info</div>
+                    <div class="card-body">
+                        <dl class="row mb-0 small">
+                            <dt class="col-sm-5 text-muted">Type</dt>
+                            <dd class="col-sm-7">@vm.Item.ItemType?.Name</dd>
+
+                            <dt class="col-sm-5 text-muted">Owner</dt>
+                            <dd class="col-sm-7">@vm.OwnerName</dd>
+
+                            <dt class="col-sm-5 text-muted">Status</dt>
+                            <dd class="col-sm-7">@vm.Item.Status</dd>
+
+                            <dt class="col-sm-5 text-muted">Created</dt>
+                            <dd class="col-sm-7">@vm.Item.CreatedDate.ToString("MMM d, yyyy")</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(vm.Item.Notes))
+            {
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header fw-medium">Notes</div>
+                        <div class="card-body">
+                            <p class="mb-0 small">@vm.Item.Notes</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="mt-3 d-flex justify-content-end gap-2">
+            <a asp-page="./Delete" asp-route-id="@vm.Item.Id" class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash me-1"></i> Delete
+            </a>
+        </div>
+    </div>
+</div>

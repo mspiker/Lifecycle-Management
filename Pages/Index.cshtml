@@ -1,0 +1,162 @@
+@page
+@model LifecycleManagement.Pages.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-0 fw-bold">Dashboard</h1>
+        <p class="text-muted mb-0">Lifecycle &amp; Renewal Overview</p>
+    </div>
+    <a asp-page="/Items/Create" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i> New Item
+    </a>
+</div>
+
+<!-- Stats Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="card stat-card stat-critical h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <div class="stat-value">@Model.CriticalItems.Count</div>
+                        <div class="stat-label">Critical</div>
+                    </div>
+                    <span class="stat-icon text-danger"><i class="bi bi-exclamation-triangle-fill"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card stat-card stat-approaching h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <div class="stat-value">@Model.ApproachingItems.Count</div>
+                        <div class="stat-label">Approaching</div>
+                    </div>
+                    <span class="stat-icon text-warning"><i class="bi bi-clock-fill"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card stat-card stat-safe h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <div class="stat-value">@(Model.AllItems.Count - Model.CriticalItems.Count - Model.ApproachingItems.Count)</div>
+                        <div class="stat-label">Safe</div>
+                    </div>
+                    <span class="stat-icon text-success"><i class="bi bi-check-circle-fill"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <div class="stat-value">@Model.AllItems.Count</div>
+                        <div class="stat-label">Total Active</div>
+                    </div>
+                    <span class="stat-icon text-primary"><i class="bi bi-collection-fill"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="card mb-4">
+    <div class="card-body py-2">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-12 col-md-4">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search items...">
+                </div>
+            </div>
+            <div class="col-6 col-md-2">
+                <select name="ItemTypeFilter" class="form-select form-select-sm">
+                    <option value="">All Types</option>
+                    @foreach (var t in Model.ItemTypes)
+                    {
+                        <option value="@t.Id" selected="@(Model.ItemTypeFilter == t.Id.ToString())">@t.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-6 col-md-3">
+                <select name="OwnerFilter" class="form-select form-select-sm" @(Model.MyItemsOnly ? "disabled" : "")>
+                    <option value="">All Owners</option>
+                    <option value="unassigned" selected="@(Model.OwnerFilter == "unassigned")">Unassigned</option>
+                    @foreach (var u in Model.Users)
+                    {
+                        <option value="@u.Id" selected="@(Model.OwnerFilter == u.Id)">@(u.DisplayName ?? u.Email)</option>
+                    }
+                </select>
+            </div>
+            <div class="col-6 col-md-2">
+                <div class="form-check form-switch ms-1">
+                    <input class="form-check-input" type="checkbox" name="MyItemsOnly" value="true" id="myItemsOnly" @(Model.MyItemsOnly ? "checked" : "")>
+                    <label class="form-check-label small" for="myItemsOnly">My Items</label>
+                </div>
+            </div>
+            <div class="col-6 col-md-1 d-flex gap-1">
+                <button type="submit" class="btn btn-sm btn-primary flex-fill">Go</button>
+                <a asp-page="/Index" class="btn btn-sm btn-outline-secondary flex-fill">Clear</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Tabs -->
+<ul class="nav nav-tabs mb-3" id="dashTabs" role="tablist">
+    <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-all">
+            All <span class="badge bg-secondary ms-1">@Model.AllItems.Count</span>
+        </button>
+    </li>
+    @if (Model.CriticalItems.Any())
+    {
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-critical">
+                Critical <span class="badge bg-danger ms-1">@Model.CriticalItems.Count</span>
+            </button>
+        </li>
+    }
+    @if (Model.ApproachingItems.Any())
+    {
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-approaching">
+                Approaching <span class="badge bg-warning text-dark ms-1">@Model.ApproachingItems.Count</span>
+            </button>
+        </li>
+    }
+    @if (Model.UpcomingItems.Any())
+    {
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-upcoming">
+                Upcoming <span class="badge bg-info text-dark ms-1">@Model.UpcomingItems.Count</span>
+            </button>
+        </li>
+    }
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tab-all">
+        @await Html.PartialAsync("_ItemTable", Model.AllItems)
+    </div>
+    <div class="tab-pane fade" id="tab-critical">
+        @await Html.PartialAsync("_ItemTable", Model.CriticalItems)
+    </div>
+    <div class="tab-pane fade" id="tab-approaching">
+        @await Html.PartialAsync("_ItemTable", Model.ApproachingItems)
+    </div>
+    <div class="tab-pane fade" id="tab-upcoming">
+        @await Html.PartialAsync("_ItemTable", Model.UpcomingItems)
+    </div>
+</div>

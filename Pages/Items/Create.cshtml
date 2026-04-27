@@ -1,0 +1,83 @@
+@page
+@model LifecycleManagement.Pages.Items.CreateModel
+@{
+    ViewData["Title"] = "Create Item";
+}
+
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+        <div class="d-flex align-items-center mb-4">
+            <a asp-page="./Index" class="btn btn-sm btn-outline-secondary me-3"><i class="bi bi-arrow-left"></i></a>
+            <div>
+                <h1 class="h3 mb-0 fw-bold">Create Item</h1>
+                <p class="text-muted mb-0">Add a new lifecycle item</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label asp-for="Item.Name" class="form-label fw-medium">Name <span class="text-danger">*</span></label>
+                            <input asp-for="Item.Name" class="form-control" placeholder="e.g., example.com" />
+                            <span asp-validation-for="Item.Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Item.ItemTypeId" class="form-label fw-medium">Type <span class="text-danger">*</span></label>
+                            <select asp-for="Item.ItemTypeId" asp-items="Model.ItemTypes" class="form-select">
+                                <option value="">-- Select Type --</option>
+                            </select>
+                            <span asp-validation-for="Item.ItemTypeId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Item.ExpirationDate" class="form-label fw-medium">Expiration Date <span class="text-danger">*</span></label>
+                            <input asp-for="Item.ExpirationDate" class="form-control" type="date" />
+                            <span asp-validation-for="Item.ExpirationDate" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Item.OwnerUserId" class="form-label fw-medium">Owner</label>
+                            <select asp-for="Item.OwnerUserId" asp-items="Model.Users" class="form-select">
+                                <option value="">-- Unassigned --</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Item.LeadDaysOverride" class="form-label fw-medium">Lead Days Override</label>
+                            <input asp-for="Item.LeadDaysOverride" class="form-control" type="number" min="0" placeholder="Uses type default" />
+                            <div class="form-text">Leave blank to use the item type default</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Item.Status" class="form-label fw-medium">Status</label>
+                            <select asp-for="Item.Status" class="form-select"
+                                asp-items="Html.GetEnumSelectList<LifecycleManagement.Models.ItemStatus>()">
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Item.Notes" class="form-label fw-medium">Notes</label>
+                            <textarea asp-for="Item.Notes" class="form-control" rows="3" placeholder="Optional notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a asp-page="./Index" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-lg me-1"></i> Create Item
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
